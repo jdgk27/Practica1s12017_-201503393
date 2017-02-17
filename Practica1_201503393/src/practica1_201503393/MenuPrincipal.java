@@ -5,17 +5,37 @@
  */
 package practica1_201503393;
 
+import java.awt.Graphics;
+import java.awt.Image;
 import java.awt.Panel;
+import java.awt.image.BufferedImage;
 import java.io.File;
-import javax.lang.model.element.Element;
+import java.io.IOException;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.imageio.ImageIO;
 import javax.swing.AbstractListModel;
 import javax.swing.DefaultListModel;
+import javax.swing.JComponent;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.ListModel;
 import javax.swing.filechooser.FileNameExtensionFilter;
-import javax.swing.text.Document;
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.parsers.ParserConfigurationException;
+import jdk.internal.org.xml.sax.XMLReader;
+import org.jdom2.Document;         // |
+import org.jdom2.Element;          // |\ Librerías
+import org.jdom2.JDOMException;    // |/ JDOM
+import org.jdom2.input.SAXBuilder; // |
+//import org.w3c.dom.Document;
+//import org.w3c.dom.Element;
+import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
+import org.xml.sax.SAXException;
 
 /**
  *
@@ -98,18 +118,18 @@ public class MenuPrincipal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        JOptionPane.showMessageDialog(null, "Archivo cargado correctamente", "OPERACIÓN EXITOSA", JOptionPane.INFORMATION_MESSAGE);
-
-    }//GEN-LAST:event_jButton1ActionPerformed
-
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         JFileChooser chooser = new JFileChooser();
         FileNameExtensionFilter filter = new FileNameExtensionFilter("XML Files", "xml");
         chooser.setFileFilter(filter);
         int returnVal = chooser.showOpenDialog(this);
         if(returnVal == JFileChooser.APPROVE_OPTION) {
-            
+            cargarXml(chooser.getSelectedFile().getAbsolutePath());
+            JOptionPane.showMessageDialog(null, "Archivo cargado correctamente", "OPERACIÓN EXITOSA", JOptionPane.INFORMATION_MESSAGE);
         }
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        
     }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
@@ -145,6 +165,113 @@ public class MenuPrincipal extends javax.swing.JFrame {
                 new MenuPrincipal().setVisible(true);
             }
         });
+    }
+    
+    public void cargarXml(String archivo) {
+       
+        SAXBuilder builder = new SAXBuilder();
+        File xmlFile = new File(archivo);
+        try {
+            //Se crea el documento a traves del archivo
+            Document document = (Document) builder.build(xmlFile);
+
+            //Se obtiene la raiz 'tables'
+            Element rootNode = document.getRootElement();
+
+            //Se obtiene la lista de hijos de la raiz 'tables'
+            List list = rootNode.getChildren("dimension");
+            List list_dobles = rootNode.getChildren("dobles");
+            List list_triples = rootNode.getChildren("triples");
+            List list_diccionario = rootNode.getChildren("diccionario");
+            //Se recorre la lista de hijos de 'tables'
+            for (int i = 0; i < list.size(); i++) {
+                //Se obtiene el elemento 'tabla'
+                Element tabla = (Element) list.get(i);
+                System.out.println("Dimension: "+tabla.getText());
+            }
+            for (int i = 0; i < list_dobles.size(); i++) {
+                //Se obtiene el elemento 'tabla'
+                Element tabla = (Element) list_dobles.get(i);
+                //Se obtiene el atributo 'nombre' que esta en el tag 'tabla'
+                //String nombreTabla = tabla.getAttributeValue("nombre");
+
+                //System.out.println("Tabla: " + nombreTabla);
+
+                //Se obtiene la lista de hijos del tag 'tabla'
+                List lista_campos = tabla.getChildren();
+
+                //System.out.println("\tNombre\t\tTipo\t\tValor");
+
+                //Se recorre la lista de campos
+                for (int j = 0; j < lista_campos.size(); j++) {
+                    //Se obtiene el elemento 'campo'
+                    Element campo = (Element) lista_campos.get(j);
+
+                    //Se obtienen los valores que estan entre los tags '<campo></campo>'
+                    //Se obtiene el valor que esta entre los tags '<nombre></nombre>'
+                    String x = campo.getChildTextTrim("x");
+
+                    //Se obtiene el valor que esta entre los tags '<tipo></tipo>'
+                    String y = campo.getChildTextTrim("y");
+
+                    System.out.println("Puntos Dobles en la posicion X:"+ x + " Y: " + y);
+                }
+            }
+            for (int i = 0; i < list_triples.size(); i++) {
+                //Se obtiene el elemento 'tabla'
+                Element tabla = (Element) list_triples.get(i);
+                //Se obtiene el atributo 'nombre' que esta en el tag 'tabla'
+                //String nombreTabla = tabla.getAttributeValue("nombre");
+
+                //System.out.println("Tabla: " + nombreTabla);
+
+                //Se obtiene la lista de hijos del tag 'tabla'
+                List lista_campos = tabla.getChildren();
+
+                //System.out.println("\tNombre\t\tTipo\t\tValor");
+
+                //Se recorre la lista de campos
+                for (int j = 0; j < lista_campos.size(); j++) {
+                    //Se obtiene el elemento 'campo'
+                    Element campo = (Element) lista_campos.get(j);
+
+                    //Se obtienen los valores que estan entre los tags '<campo></campo>'
+                    //Se obtiene el valor que esta entre los tags '<nombre></nombre>'
+                    String x = campo.getChildTextTrim("x");
+
+                    //Se obtiene el valor que esta entre los tags '<tipo></tipo>'
+                    String y = campo.getChildTextTrim("y");
+
+                    System.out.println("Puntos Triples en la posicion X:"+ x + " Y: " + y);
+                }
+            }
+            
+            for (int i = 0; i < list_diccionario.size(); i++) {
+                //Se obtiene el elemento 'tabla'
+                Element tabla = (Element) list_diccionario.get(i);
+                //Se obtiene el atributo 'nombre' que esta en el tag 'tabla'
+                //String nombreTabla = tabla.getAttributeValue("nombre");
+
+                //System.out.println("Tabla: " + nombreTabla);
+
+                //Se obtiene la lista de hijos del tag 'tabla'
+                List lista_campos = tabla.getChildren();
+
+                //System.out.println("\tNombre\t\tTipo\t\tValor");
+
+                //Se recorre la lista de campos
+                for (int j = 0; j < lista_campos.size(); j++) {
+                    //Se obtiene el elemento 'campo'
+                    Element campo = (Element) lista_campos.get(j);
+                    System.out.println("Palabra: " + 
+                    campo.getText());
+                }
+            }
+        } catch (IOException io) {
+            System.out.println(io.getMessage());
+        } catch (JDOMException jdomex) {
+            System.out.println(jdomex.getMessage());
+        }
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
