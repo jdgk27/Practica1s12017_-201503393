@@ -42,6 +42,8 @@ import org.xml.sax.SAXException;
  * @author Daniel De León
  */
 public class MenuPrincipal extends javax.swing.JFrame {
+    
+    public Lista_Diccio ld = new Lista_Diccio();
 
     /**
      * Creates new form MenuPrincipal
@@ -66,6 +68,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Scrabble");
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        setResizable(false);
 
         jButton1.setText("Leer Archivo");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -129,6 +132,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        //System.out.println(ld.Mostrar());
         
     }//GEN-LAST:event_jButton2ActionPerformed
 
@@ -172,99 +176,50 @@ public class MenuPrincipal extends javax.swing.JFrame {
         SAXBuilder builder = new SAXBuilder();
         File xmlFile = new File(archivo);
         try {
-            //Se crea el documento a traves del archivo
             Document document = (Document) builder.build(xmlFile);
 
-            //Se obtiene la raiz 'tables'
             Element rootNode = document.getRootElement();
 
-            //Se obtiene la lista de hijos de la raiz 'tables'
             List list = rootNode.getChildren("dimension");
             List list_dobles = rootNode.getChildren("dobles");
             List list_triples = rootNode.getChildren("triples");
             List list_diccionario = rootNode.getChildren("diccionario");
-            //Se recorre la lista de hijos de 'tables'
+
             for (int i = 0; i < list.size(); i++) {
-                //Se obtiene el elemento 'tabla'
                 Element tabla = (Element) list.get(i);
-                System.out.println("Dimension: "+tabla.getText());
+                //System.out.println("Dimension: "+tabla.getText());
             }
             for (int i = 0; i < list_dobles.size(); i++) {
-                //Se obtiene el elemento 'tabla'
                 Element tabla = (Element) list_dobles.get(i);
-                //Se obtiene el atributo 'nombre' que esta en el tag 'tabla'
-                //String nombreTabla = tabla.getAttributeValue("nombre");
-
-                //System.out.println("Tabla: " + nombreTabla);
-
-                //Se obtiene la lista de hijos del tag 'tabla'
                 List lista_campos = tabla.getChildren();
 
-                //System.out.println("\tNombre\t\tTipo\t\tValor");
-
-                //Se recorre la lista de campos
                 for (int j = 0; j < lista_campos.size(); j++) {
-                    //Se obtiene el elemento 'campo'
                     Element campo = (Element) lista_campos.get(j);
-
-                    //Se obtienen los valores que estan entre los tags '<campo></campo>'
-                    //Se obtiene el valor que esta entre los tags '<nombre></nombre>'
                     String x = campo.getChildTextTrim("x");
-
-                    //Se obtiene el valor que esta entre los tags '<tipo></tipo>'
                     String y = campo.getChildTextTrim("y");
-
-                    System.out.println("Puntos Dobles en la posicion X:"+ x + " Y: " + y);
+                    //System.out.println("Puntos Dobles en la posicion X:"+ x + " Y: " + y);
                 }
             }
             for (int i = 0; i < list_triples.size(); i++) {
-                //Se obtiene el elemento 'tabla'
                 Element tabla = (Element) list_triples.get(i);
-                //Se obtiene el atributo 'nombre' que esta en el tag 'tabla'
-                //String nombreTabla = tabla.getAttributeValue("nombre");
-
-                //System.out.println("Tabla: " + nombreTabla);
-
-                //Se obtiene la lista de hijos del tag 'tabla'
                 List lista_campos = tabla.getChildren();
-
-                //System.out.println("\tNombre\t\tTipo\t\tValor");
-
-                //Se recorre la lista de campos
+                
                 for (int j = 0; j < lista_campos.size(); j++) {
-                    //Se obtiene el elemento 'campo'
                     Element campo = (Element) lista_campos.get(j);
-
-                    //Se obtienen los valores que estan entre los tags '<campo></campo>'
-                    //Se obtiene el valor que esta entre los tags '<nombre></nombre>'
                     String x = campo.getChildTextTrim("x");
-
-                    //Se obtiene el valor que esta entre los tags '<tipo></tipo>'
                     String y = campo.getChildTextTrim("y");
-
-                    System.out.println("Puntos Triples en la posicion X:"+ x + " Y: " + y);
+                    //System.out.println("Puntos Triples en la posicion X:"+ x + " Y: " + y);
                 }
             }
             
             for (int i = 0; i < list_diccionario.size(); i++) {
-                //Se obtiene el elemento 'tabla'
                 Element tabla = (Element) list_diccionario.get(i);
-                //Se obtiene el atributo 'nombre' que esta en el tag 'tabla'
-                //String nombreTabla = tabla.getAttributeValue("nombre");
-
-                //System.out.println("Tabla: " + nombreTabla);
-
-                //Se obtiene la lista de hijos del tag 'tabla'
                 List lista_campos = tabla.getChildren();
 
-                //System.out.println("\tNombre\t\tTipo\t\tValor");
-
-                //Se recorre la lista de campos
                 for (int j = 0; j < lista_campos.size(); j++) {
-                    //Se obtiene el elemento 'campo'
                     Element campo = (Element) lista_campos.get(j);
-                    System.out.println("Palabra: " + 
-                    campo.getText());
+                    ld.push(campo.getText());
+                    //System.out.println("Palabra: " + campo.getText());
                 }
             }
         } catch (IOException io) {

@@ -9,17 +9,17 @@ package practica1_201503393;
  *
  * @author Daniel De León
  */
-public class Lista_Diccio {
-    private Nodo_Diccio primera;
+public class Lista_fj {
+    private Nodo_fj primera;
     public int cuenta;
 
-    public Lista_Diccio() {
+    public Lista_fj() {
         this.primera = null;
         cuenta=1;
     }
 
     public void push(Object dato) {
-        Nodo_Diccio nuevo = new Nodo_Diccio(dato);
+        Nodo_fj nuevo = new Nodo_fj(dato);
 
         if (this.primera == null) {
             this.primera = nuevo;
@@ -37,15 +37,15 @@ public class Lista_Diccio {
         }
     }
 
-    public Nodo_Diccio getCabeza() {
+    public Nodo_fj getCabeza() {
         return primera;
     }
 
-    public void setCabeza(Nodo_Diccio cabeza) {
+    public void setCabeza(Nodo_fj cabeza) {
         this.primera = cabeza;
     }
     
-    public Nodo_Diccio indice;
+    public Nodo_fj indice;
     
     public String Buscar(Object buscar) {
         indice = this.primera;
@@ -59,7 +59,7 @@ public class Lista_Diccio {
     }
     
     public void Eliminar(Object buscar){
-        Nodo_Diccio actual, anterior;
+        Nodo_fj actual, anterior;
         boolean encontrado;
         actual= primera;
         anterior= null;
@@ -80,5 +80,19 @@ public class Lista_Diccio {
             }
             actual=null;
         }
+    }
+    
+    public Object[] enviarD(){
+        Object dat[]=new String[cuenta];
+        System.out.println(cuenta);
+        Nodo_fj n;
+        int k = 0;
+        n = primera;
+        while (n != null){
+            dat[k]=n.dato;
+            n = n.adelante;
+            k++;
+        }
+        return dat;
     }
 }
