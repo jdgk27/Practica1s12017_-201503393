@@ -33,7 +33,7 @@ public class Lista_fj {
         if (this.primera != null) {
             return this.primera.Mostrar();
         } else {
-            return "La categoría está vacia";
+            return "No hay fichas";
         }
     }
 
