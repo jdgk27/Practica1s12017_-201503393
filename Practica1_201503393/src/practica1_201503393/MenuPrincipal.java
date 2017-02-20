@@ -45,7 +45,6 @@ public class MenuPrincipal extends javax.swing.JFrame {
     
     public Lista_Diccio ld = new Lista_Diccio();
     public int dimension;
-    public Nodo_Matriz matriz = new Nodo_Matriz(0);
 
     /**
      * Creates new form MenuPrincipal
@@ -194,6 +193,8 @@ public class MenuPrincipal extends javax.swing.JFrame {
             for (int i = 0; i < list.size(); i++) {
                 Element tabla = (Element) list.get(i);
                 dimension = Integer.parseInt(tabla.getText());
+                Matriz asd = new Matriz();
+                asd.crearMatriz(dimension);
                 //System.out.println("Dimension: "+tabla.getText());
             }
             for (int i = 0; i < list_dobles.size(); i++) {
@@ -233,12 +234,6 @@ public class MenuPrincipal extends javax.swing.JFrame {
             System.out.println(io.getMessage());
         } catch (JDOMException jdomex) {
             System.out.println(jdomex.getMessage());
-        }
-    }
-    
-    public void crearmatriz(){
-        for(int i =0;i<dimension;i++){
-            matriz.insertar_col(i+1);
         }
     }
 

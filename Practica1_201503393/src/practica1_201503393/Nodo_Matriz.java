@@ -13,6 +13,7 @@ public class Nodo_Matriz {
     
     public String letra;
     public int valor;
+    public int punteo;
     public Nodo_Matriz arriba;
     public Nodo_Matriz abajo;
     public Nodo_Matriz izquierda;
@@ -20,7 +21,7 @@ public class Nodo_Matriz {
     
     //public int dimension = MenuPrincipal.dimension;
     
-    public Nodo_Matriz(int valor) {
+    public Nodo_Matriz() {
         this.valor = valor;
         this.arriba = null;
         this.abajo = null;
@@ -39,18 +40,39 @@ public class Nodo_Matriz {
     
     public void insertar_fila(Nodo_Matriz nuevo){
         if (this.abajo != null){
-            this.abajo.insertar_col(valor);
+            this.abajo.insertar_col(nuevo);
         }
         else{
             this.abajo = nuevo;
         }     
     }
     
+    public void setLetra(String letra){
+        this.letra = letra;
+    }
+    
+    public String getLetra(){
+        return this.letra;
+    }
+    
+    public void setPunteo(int punteo){
+        this.punteo = punteo;
+    }
+    
+    public int getPunteo(){
+        return this.punteo;
+    }
+    
     public String Mostrar() {        
         
-        String retorno = this.dato+"\n";
-        if (this.adelante != null) {
-            retorno += this.adelante.Mostrar();
+        String retorno = this.letra+"\n";
+        if (this.letra != null) {
+            if (this.derecha != null){
+                retorno += this.derecha.Mostrar();
+            }
+            else{
+                retorno += this.abajo.Mostrar();
+            }
         }
         return retorno;      
     }
