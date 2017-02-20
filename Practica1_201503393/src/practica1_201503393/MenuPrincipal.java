@@ -45,6 +45,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
     
     public Lista_Diccio ld = new Lista_Diccio();
     public int dimension;
+    public Nodo_Matriz matriz = new Nodo_Matriz(0);
 
     /**
      * Creates new form MenuPrincipal
@@ -232,6 +233,12 @@ public class MenuPrincipal extends javax.swing.JFrame {
             System.out.println(io.getMessage());
         } catch (JDOMException jdomex) {
             System.out.println(jdomex.getMessage());
+        }
+    }
+    
+    public void crearmatriz(){
+        for(int i =0;i<dimension;i++){
+            matriz.insertar_col(i+1);
         }
     }
 
