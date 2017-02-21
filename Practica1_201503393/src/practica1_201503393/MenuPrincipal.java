@@ -45,6 +45,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
     
     public Lista_Diccio ld = new Lista_Diccio();
     public int dimension;
+    Matriz asd = new Matriz();
 
     /**
      * Creates new form MenuPrincipal
@@ -193,7 +194,6 @@ public class MenuPrincipal extends javax.swing.JFrame {
             for (int i = 0; i < list.size(); i++) {
                 Element tabla = (Element) list.get(i);
                 dimension = Integer.parseInt(tabla.getText());
-                Matriz asd = new Matriz();
                 asd.crearMatriz(dimension);
                 //System.out.println("Dimension: "+tabla.getText());
             }
@@ -205,6 +205,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
                     Element campo = (Element) lista_campos.get(j);
                     String x = campo.getChildTextTrim("x");
                     String y = campo.getChildTextTrim("y");
+                    asd.setPunteo(Integer.parseInt(x),Integer.parseInt(y),2);
                     //System.out.println("Puntos Dobles en la posicion X:"+ x + " Y: " + y);
                 }
             }
@@ -216,6 +217,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
                     Element campo = (Element) lista_campos.get(j);
                     String x = campo.getChildTextTrim("x");
                     String y = campo.getChildTextTrim("y");
+                    asd.setPunteo(Integer.parseInt(x),Integer.parseInt(y),3);
                     //System.out.println("Puntos Triples en la posicion X:"+ x + " Y: " + y);
                 }
             }
