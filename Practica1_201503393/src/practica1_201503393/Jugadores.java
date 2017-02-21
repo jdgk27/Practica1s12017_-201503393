@@ -110,6 +110,7 @@ public class Jugadores extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         Lista_fj fj = new Lista_fj();
         lj.insertar(txtjugador.getText(), fj);
+        System.out.println(txtjugador.getText());
         txtjugador.setText("");
         conteo++;
         lbljugador.setText("Jugador " + conteo + ":" );

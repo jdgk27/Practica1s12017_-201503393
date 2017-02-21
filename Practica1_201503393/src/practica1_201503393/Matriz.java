@@ -11,13 +11,14 @@ package practica1_201503393;
  */
 public class Matriz {
     public Nodo_Matriz cabeza = new Nodo_Matriz();
+    public int dimension;
 
     public void crearMatriz(int dimension) {
         /*this.cabeza.derecha = null;
         this.cabeza.abajo=null;
         this.cabeza.izquierda = null;
         this.cabeza.arriba=null;*/
-        
+        this.dimension=dimension;
         Nodo_Matriz nuevo = new Nodo_Matriz();
         Nodo_Matriz aux = cabeza;
         int x =0;
@@ -109,6 +110,17 @@ public class Matriz {
         }
         aux.setPunteo(punteo);
     }
+    
+    /*public String color() {//este metodo esta en la clase de mi matriz
+        String im = actual.getImagen();//nodo actual (seteado inicialmente como el primero)
+        if (actual.getSiguiete() != null) {
+            actual = actual.getSiguiete();
+        } else if (primerfila.getDown() != null) {
+            primerfila = primerfila.getDown();//nodo que indica el primer nodo de la fila actual
+            actually = primerfila;
+        }
+        return im;
+    }*/
     
     /*public void insertar_col(int valor){
         Nodo_Matriz nuevo = new Nodo_Matriz(valor);

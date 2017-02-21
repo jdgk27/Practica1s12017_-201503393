@@ -44,7 +44,7 @@ import org.xml.sax.SAXException;
 public class MenuPrincipal extends javax.swing.JFrame {
     
     public Lista_Diccio ld = new Lista_Diccio();
-    public int dimension;
+    static public int dimension;
     Matriz asd = new Matriz();
 
     /**
@@ -195,7 +195,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
                 Element tabla = (Element) list.get(i);
                 dimension = Integer.parseInt(tabla.getText());
                 asd.crearMatriz(dimension);
-                //System.out.println("Dimension: "+tabla.getText());
+                System.out.println("Dimension: "+tabla.getText());
             }
             for (int i = 0; i < list_dobles.size(); i++) {
                 Element tabla = (Element) list_dobles.get(i);
