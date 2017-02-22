@@ -44,7 +44,7 @@ import org.xml.sax.SAXException;
  */
 public class MenuPrincipal extends javax.swing.JFrame {
     
-    public Lista_Diccio ld = new Lista_Diccio();
+    static public Lista_Diccio ld = new Lista_Diccio();
     static public int dimension;
     static public Matriz asd = new Matriz();
 
@@ -159,9 +159,20 @@ public class MenuPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_btnjugarActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        for(int i=0;i<8;i++){
-            for(int j=0;i<8;i++){
-                System.out.println(asd.getPunteo(i,j)+" en: "+ i + "," + j);
+        File miDir = new File(".");
+        String directo="";
+        try {
+            directo = miDir.getCanonicalPath();
+        } catch (IOException ex) {
+            Logger.getLogger(MenuPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+            String dotPath = directo + "\\Graphviz 2.28\\bin\\dot.exe";
+            System.out.println(dotPath);
+        for(int i=0;i<20;i++){
+            System.out.println("!!!!!!!!!!!!!!!!!!!!");
+            for(int j=0;j<20;j++){
+                System.out.print(" -------- "+asd.getPunteo(i,j)+" en: "+ i + "," + j);
             }
         }
     }//GEN-LAST:event_jButton2ActionPerformed

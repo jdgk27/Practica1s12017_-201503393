@@ -37,7 +37,6 @@ public class Nodo_Juga {
         return retorno;
     }
     
-    
     public Nodo_Juga get(int nth, int pos){
         if (nth == pos) {
             return this;

@@ -36,6 +36,14 @@ public class Lista_fj {
             return "No hay fichas";
         }
     }
+    
+    public String cada(int pos){
+        Nodo_fj aux = primera;
+        for(int i=0;i<pos;i++){
+            aux=aux.adelante;
+        }
+        return aux.dato.toString();
+    }
 
     public Nodo_fj getCabeza() {
         return primera;

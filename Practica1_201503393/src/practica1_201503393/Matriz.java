@@ -61,11 +61,14 @@ public class Matriz {
         cabeza.abajo=aux;
         int conteo=2;
         
-        System.out.println("contenido!!!!!!!!!!!!!!!!!!!!");
+        relleno(cabeza.derecha,cabeza.derecha);
+        
+        /*System.out.println("contenido!!!!!!!!!!!!!!!!!!!!");
         while(conteo!=dimension){
             aux=cabeza;
             Nodo_Matriz c1 = cabeza;
             Nodo_Matriz c2 = cabeza;
+            Nodo_Matriz c3 = cabeza;
 
             for(int j=0;j<conteo-1;j++){
                 c2=c2.abajo;
@@ -75,20 +78,39 @@ public class Matriz {
             aux=c2;
 
             for(int i=0;i<dimension-2;i++){
-                for(int j=-1;j<i;j++){
-                    c1=c1.derecha;
+                if(i==dimension-3){
+                    for(int j=0;j<dimension;j++){
+                        c1=c1.derecha;
+                    }
+                    c3=c1;
+                    for(int j=0;j<conteo-1;j++){
+                        c3=c3.abajo;
+                    }
+                    aux.derecha=c3;
+                    aux.derecha.izquierda=aux;
+                    aux=aux.derecha;
+                    aux.arriba=c1;
+                    c1.abajo=aux;
+                    c1=cabeza;
+                    x=i+1+1;
+                    System.out.println(x);
                 }
-                aux.derecha=nuevo;
-                aux.derecha.izquierda=aux;
-                aux=aux.derecha;
-                aux.arriba=c1;
-                c1.abajo=aux;
-                c1=cabeza;
-                x=i+1+1;
-                System.out.println(x);
+                else{
+                    for(int j=-1;j<i;j++){
+                        c1=c1.derecha;
+                    }
+                    aux.derecha=nuevo;
+                    aux.derecha.izquierda=aux;
+                    aux=aux.derecha;
+                    aux.arriba=c1;
+                    c1.abajo=aux;
+                    c1=cabeza;
+                    x=i+1+1;
+                    System.out.println(x);
+                }
             }
 
-            c1=c1.derecha;
+            /*c1=c1.derecha;
             for(int j=0;j<conteo-1;j++){
                     c1=c1.abajo;
                 }
@@ -98,17 +120,48 @@ public class Matriz {
                 c1 = aux.derecha;
             }
             conteo++;
-        }
+        }*/
     }
     
     public void setPunteo(int x, int y, int punteo){
-        Nodo_Matriz aux = new Nodo_Matriz();
+        /*Nodo_Matriz aux = new Nodo_Matriz();
         aux = cabeza;
         for(int i=0;i<x;i++){
             aux=aux.derecha;
         }
         for(int i=0;i<y;i++){
             aux=aux.abajo;
+        }
+        aux.setPunteo(punteo);*/
+        int contador =0;
+        Nodo_Matriz aux= cabeza;
+        
+        if(x !=0){
+            do{
+                aux = aux.abajo;
+                contador++;
+            } while(contador != x);
+            if(y !=0){
+                contador=0;
+                do{
+                    aux = aux.derecha;
+                    contador++;
+                } while(contador != y);
+                aux.setPunteo(punteo);
+            }
+            else{
+                aux.setPunteo(punteo);
+            }
+        }
+        else{
+            if(y !=0){
+                contador = 0;
+                do{
+                    aux= aux.derecha;
+                    contador++;
+                } while(contador != y);
+                aux.setPunteo(punteo);
+            }
         }
         aux.setPunteo(punteo);
     }
@@ -191,5 +244,37 @@ public class Matriz {
             }
         }
         return aux.getPunteo();
+    }
+    
+    public void relleno(Nodo_Matriz actual, Nodo_Matriz puntero){
+        if(actual != null){
+            Nodo_Matriz temp = actual.izquierda.abajo;
+            if(actual.abajo==null){
+                Nodo_Matriz nuevo = new Nodo_Matriz();
+                if(temp != null){
+                    if(temp.derecha == null){
+                        temp.derecha=nuevo;
+                        nuevo.izquierda=temp;
+                        actual.abajo=nuevo;
+                        nuevo.arriba=actual;
+                        relleno(nuevo,puntero);
+                    }
+                    else{
+                        temp.derecha.arriba=actual;
+                        actual.abajo=temp.derecha;
+                        relleno(puntero.derecha, puntero.derecha);
+                    }
+                }
+            }
+            else{
+                if(temp != null){
+                    if(temp.derecha == null){
+                        temp.derecha = actual.abajo;
+                        actual.abajo.izquierda = temp;
+                        relleno(actual.abajo, puntero);
+                    }
+                }
+            }
+        }
     }
 }

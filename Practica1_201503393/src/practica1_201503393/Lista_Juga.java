@@ -91,6 +91,14 @@ public class Lista_Juga {
         }
     }
     
+    public String getNombre(int num){
+        Nodo_Juga asd = nc;
+        for(int i=0; i<num;i++){
+            asd=asd.siguiente;
+        }
+        return asd.getTitulo();
+    }
+    
     public String[] enviarT(){
         Nodo_Juga p;
         String[]tit=new String[conteo];

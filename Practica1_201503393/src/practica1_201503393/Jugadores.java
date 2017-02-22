@@ -13,8 +13,8 @@ import java.util.Random;
  */
 public class Jugadores extends javax.swing.JFrame {
     
-    public Lista_Juga lj = new Lista_Juga();
-    public int conteo = 1;
+    static public Lista_Juga lj = new Lista_Juga();
+    static public int conteo = 1;
     public Cola_Fichas cola = new Cola_Fichas();
 
     /**

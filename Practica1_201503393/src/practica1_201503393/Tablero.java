@@ -24,7 +24,21 @@ public class Tablero extends javax.swing.JFrame {
     public Tablero() {
         initComponents();
         crearTablero();
-        tp1.setText("");
+        lblturno.setText(Jugadores.lj.getNombre(0));
+        tp1.setText(Jugadores.lj.nc.ls.cada(0));
+        tp2.setText(Jugadores.lj.nc.ls.cada(1));
+        tp3.setText(Jugadores.lj.nc.ls.cada(2));
+        tp4.setText(Jugadores.lj.nc.ls.cada(3));
+        tp5.setText(Jugadores.lj.nc.ls.cada(4));
+        tp6.setText(Jugadores.lj.nc.ls.cada(5));
+        tp7.setText(Jugadores.lj.nc.ls.cada(6));
+        rd1.setText(Jugadores.lj.nc.ls.cada(0));
+        rd2.setText(Jugadores.lj.nc.ls.cada(1));
+        rd3.setText(Jugadores.lj.nc.ls.cada(2));
+        rd4.setText(Jugadores.lj.nc.ls.cada(3));
+        rd5.setText(Jugadores.lj.nc.ls.cada(4));
+        rd6.setText(Jugadores.lj.nc.ls.cada(5));
+        rd7.setText(Jugadores.lj.nc.ls.cada(6));
     }
 
     /**
@@ -85,6 +99,11 @@ public class Tablero extends javax.swing.JFrame {
         jLabel3.setText("Nueva Palabra:");
 
         btnagregar.setText("Agregar");
+        btnagregar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnagregarActionPerformed(evt);
+            }
+        });
 
         jLabel4.setText("Cambiar letras:");
 
@@ -290,9 +309,34 @@ public class Tablero extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    int jugador=1;
     private void btnvalidadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnvalidadActionPerformed
-
+        if(jugador == Jugadores.conteo-1){
+            jugador =0;
+        }
+        lblturno.setText(Jugadores.lj.getNombre(jugador));
+        tp1.setText(Jugadores.lj.nc.ls.cada(0));
+        tp2.setText(Jugadores.lj.nc.ls.cada(1));
+        tp3.setText(Jugadores.lj.nc.ls.cada(2));
+        tp4.setText(Jugadores.lj.nc.ls.cada(3));
+        tp5.setText(Jugadores.lj.nc.ls.cada(4));
+        tp6.setText(Jugadores.lj.nc.ls.cada(5));
+        tp7.setText(Jugadores.lj.nc.ls.cada(6));
+        rd1.setText(Jugadores.lj.nc.ls.cada(0));
+        rd2.setText(Jugadores.lj.nc.ls.cada(1));
+        rd3.setText(Jugadores.lj.nc.ls.cada(2));
+        rd4.setText(Jugadores.lj.nc.ls.cada(3));
+        rd5.setText(Jugadores.lj.nc.ls.cada(4));
+        rd6.setText(Jugadores.lj.nc.ls.cada(5));
+        rd7.setText(Jugadores.lj.nc.ls.cada(6));
+        jugador++;
     }//GEN-LAST:event_btnvalidadActionPerformed
+
+    private void btnagregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnagregarActionPerformed
+        MenuPrincipal.ld.push(txtpalabra.getText());
+        System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+        System.out.println(MenuPrincipal.ld.Mostrar());
+    }//GEN-LAST:event_btnagregarActionPerformed
 
     /**
      * @param args the command line arguments
