@@ -125,5 +125,71 @@ public class Matriz {
         aux.setColor(color);
     }
     
+    public Color getColor(int x, int y){
+        int contador =0;
+        Nodo_Matriz aux= cabeza;
+        
+        if(x !=0){
+            do{
+                aux = aux.abajo;
+                contador++;
+            } while(contador != x);
+            if(y !=0){
+                contador=0;
+                do{
+                    aux = aux.derecha;
+                    contador++;
+                } while(contador != y);
+                return aux.getColor();
+            }
+            else{
+                return aux.getColor();
+            }
+        }
+        else{
+            if(y !=0){
+                contador = 0;
+                do{
+                    aux= aux.derecha;
+                    contador++;
+                } while(contador != y);
+                return aux.getColor();
+            }
+        }
+        return aux.getColor();
+    }
     
+    public int getPunteo(int x, int y){
+        int contador =0;
+        Nodo_Matriz aux= cabeza;
+        
+        if(x !=0){
+            do{
+                aux = aux.abajo;
+                contador++;
+            } while(contador != x);
+            if(y !=0){
+                contador=0;
+                do{
+                    aux = aux.derecha;
+                    contador++;
+                } while(contador != y);
+                return aux.getPunteo();
+            }
+            else{
+                return aux.getPunteo();
+            }
+        }
+        else{
+            if(y !=0){
+                contador = 0;
+                do{
+                    aux= aux.derecha;
+                    contador++;
+                } while(contador != y);
+                return aux.getPunteo();
+            }
+        }
+        return aux.getPunteo();
+    }
 }

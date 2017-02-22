@@ -15,12 +15,12 @@ public class Nodo_Matriz {
     
     public String letra;
     public int valor;
-    public int punteo;
+    public int punteo = 1;
     public Nodo_Matriz arriba;
     public Nodo_Matriz abajo;
     public Nodo_Matriz izquierda;
     public Nodo_Matriz derecha;
-    public Color bcolor;
+    public Color bcolor = Color.WHITE;
     
     //public int dimension = MenuPrincipal.dimension;
     
@@ -72,19 +72,5 @@ public class Nodo_Matriz {
     
     public Color getColor(){
         return this.bcolor;
-    }
-    
-    public String Mostrar() {        
-        
-        String retorno = this.letra+"\n";
-        if (this.letra != null) {
-            if (this.derecha != null){
-                retorno += this.derecha.Mostrar();
-            }
-            else{
-                retorno += this.abajo.Mostrar();
-            }
-        }
-        return retorno;      
     }
 }

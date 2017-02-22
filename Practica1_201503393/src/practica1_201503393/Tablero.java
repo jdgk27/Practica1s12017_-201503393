@@ -17,11 +17,14 @@ import javax.swing.border.Border;
  */
 public class Tablero extends javax.swing.JFrame {
 
+    public int dimensions;
     /**
      * Creates new form Tablero
      */
     public Tablero() {
         initComponents();
+        crearTablero();
+        tp1.setText("");
     }
 
     /**
@@ -101,18 +104,25 @@ public class Tablero extends javax.swing.JFrame {
 
         btncambiar.setText("Cambiar");
 
+        tp1.setEditable(false);
         jScrollPane1.setViewportView(tp1);
 
+        tp2.setEditable(false);
         jScrollPane2.setViewportView(tp2);
 
+        tp3.setEditable(false);
         jScrollPane3.setViewportView(tp3);
 
+        tp4.setEditable(false);
         jScrollPane4.setViewportView(tp4);
 
+        tp5.setEditable(false);
         jScrollPane5.setViewportView(tp5);
 
+        tp6.setEditable(false);
         jScrollPane6.setViewportView(tp6);
 
+        tp7.setEditable(false);
         jScrollPane7.setViewportView(tp7);
 
         btnvalidad.setText("Validad Tipo");
@@ -126,7 +136,7 @@ public class Tablero extends javax.swing.JFrame {
 
         jLabel5.setText("Area de Reportes:");
 
-        panel.setBackground(new java.awt.Color(255, 51, 102));
+        panel.setBackground(new java.awt.Color(255, 255, 255));
         panel.setPreferredSize(new java.awt.Dimension(450, 450));
 
         javax.swing.GroupLayout panelLayout = new javax.swing.GroupLayout(panel);
@@ -281,7 +291,7 @@ public class Tablero extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnvalidadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnvalidadActionPerformed
-        crearTablero();
+
     }//GEN-LAST:event_btnvalidadActionPerformed
 
     /**
@@ -320,17 +330,17 @@ public class Tablero extends javax.swing.JFrame {
     }
     
     public void crearTablero(){
-        System.out.println("Si funciona!!!!!!!!!!");
-        int dim = MenuPrincipal.dimension; //el tamaño de la matriz ortogonal cuadrada
-        System.out.println("LA DIMENSION DEL TABLERO ES " + dim);
-        int dimensions = panel.getWidth() / dim; //obtiene la dimension das fichas (tamaño del panel / tamaño de la matriz)
+        //System.out.println("Si funciona!!!!!!!!!!");
+        int dim = MenuPrincipal.dimension;
+        //System.out.println("LA DIMENSION DEL TABLERO ES " + dim);
+        dimensions = panel.getWidth() / dim;
         for (int i = 0; i < dim; i++) {
             for (int j = 0; j < dim; j++) {
-                JLabel cuadro = new JLabel();  //creas nueva label
+                JLabel cuadro = new JLabel();
                 Border bd= lblturno.getBorder();
                 cuadro.setBorder(bd);
                 cuadro.setText("0");
-                //cuadro.setBackground(MenuPrincipal.asd.);
+                cuadro.setBackground(MenuPrincipal.asd.getColor(i, j));
                 panel.add(cuadro);
                 cuadro.setBounds(i * dimensions, j * dimensions, dimensions, dimensions);
                 cuadro.setVisible(true);
