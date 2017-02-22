@@ -146,31 +146,24 @@ public class Tablero extends javax.swing.JFrame {
         btncambiar.setText("Cambiar");
 
         tp1.setEditable(false);
-        tp1.setDragEnabled(true);
         jScrollPane1.setViewportView(tp1);
 
         tp2.setEditable(false);
-        tp2.setDragEnabled(true);
         jScrollPane2.setViewportView(tp2);
 
         tp3.setEditable(false);
-        tp3.setDragEnabled(true);
         jScrollPane3.setViewportView(tp3);
 
         tp4.setEditable(false);
-        tp4.setDragEnabled(true);
         jScrollPane4.setViewportView(tp4);
 
         tp5.setEditable(false);
-        tp5.setDragEnabled(true);
         jScrollPane5.setViewportView(tp5);
 
         tp6.setEditable(false);
-        tp6.setDragEnabled(true);
         jScrollPane6.setViewportView(tp6);
 
         tp7.setEditable(false);
-        tp7.setDragEnabled(true);
         jScrollPane7.setViewportView(tp7);
 
         btnvalidad.setText("Validad Tipo");

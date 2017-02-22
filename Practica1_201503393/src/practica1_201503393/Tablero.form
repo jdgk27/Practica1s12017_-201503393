@@ -288,7 +288,6 @@
         <Component class="javax.swing.JTextPane" name="tp1">
           <Properties>
             <Property name="editable" type="boolean" value="false"/>
-            <Property name="dragEnabled" type="boolean" value="true"/>
           </Properties>
         </Component>
       </SubComponents>
@@ -303,7 +302,6 @@
         <Component class="javax.swing.JTextPane" name="tp2">
           <Properties>
             <Property name="editable" type="boolean" value="false"/>
-            <Property name="dragEnabled" type="boolean" value="true"/>
           </Properties>
         </Component>
       </SubComponents>
@@ -318,7 +316,6 @@
         <Component class="javax.swing.JTextPane" name="tp3">
           <Properties>
             <Property name="editable" type="boolean" value="false"/>
-            <Property name="dragEnabled" type="boolean" value="true"/>
           </Properties>
         </Component>
       </SubComponents>
@@ -333,7 +330,6 @@
         <Component class="javax.swing.JTextPane" name="tp4">
           <Properties>
             <Property name="editable" type="boolean" value="false"/>
-            <Property name="dragEnabled" type="boolean" value="true"/>
           </Properties>
         </Component>
       </SubComponents>
@@ -348,7 +344,6 @@
         <Component class="javax.swing.JTextPane" name="tp5">
           <Properties>
             <Property name="editable" type="boolean" value="false"/>
-            <Property name="dragEnabled" type="boolean" value="true"/>
           </Properties>
         </Component>
       </SubComponents>
@@ -363,7 +358,6 @@
         <Component class="javax.swing.JTextPane" name="tp6">
           <Properties>
             <Property name="editable" type="boolean" value="false"/>
-            <Property name="dragEnabled" type="boolean" value="true"/>
           </Properties>
         </Component>
       </SubComponents>
@@ -378,7 +372,6 @@
         <Component class="javax.swing.JTextPane" name="tp7">
           <Properties>
             <Property name="editable" type="boolean" value="false"/>
-            <Property name="dragEnabled" type="boolean" value="true"/>
           </Properties>
         </Component>
       </SubComponents>
