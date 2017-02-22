@@ -16,10 +16,7 @@ public class Matriz {
     public int dimension;
 
     public void crearMatriz(int dimension) {
-        /*this.cabeza.derecha = null;
-        this.cabeza.abajo=null;
-        this.cabeza.izquierda = null;
-        this.cabeza.arriba=null;*/
+       
         this.dimension=dimension;
         Nodo_Matriz nuevo = new Nodo_Matriz();
         Nodo_Matriz aux = cabeza;
