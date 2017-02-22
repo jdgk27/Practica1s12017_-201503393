@@ -14,6 +14,7 @@ import java.io.IOException;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.awt.Color;
 import javax.imageio.ImageIO;
 import javax.swing.AbstractListModel;
 import javax.swing.DefaultListModel;
@@ -45,7 +46,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
     
     public Lista_Diccio ld = new Lista_Diccio();
     static public int dimension;
-    Matriz asd = new Matriz();
+    public Matriz asd = new Matriz();
 
     /**
      * Creates new form MenuPrincipal
@@ -206,6 +207,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
                     String x = campo.getChildTextTrim("x");
                     String y = campo.getChildTextTrim("y");
                     asd.setPunteo(Integer.parseInt(x),Integer.parseInt(y),2);
+                    asd.setColor(Integer.parseInt(x),Integer.parseInt(y),Color.LIGHT_GRAY);
                     //System.out.println("Puntos Dobles en la posicion X:"+ x + " Y: " + y);
                 }
             }
@@ -218,6 +220,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
                     String x = campo.getChildTextTrim("x");
                     String y = campo.getChildTextTrim("y");
                     asd.setPunteo(Integer.parseInt(x),Integer.parseInt(y),3);
+                    asd.setColor(Integer.parseInt(x),Integer.parseInt(y),Color.cyan);
                     //System.out.println("Puntos Triples en la posicion X:"+ x + " Y: " + y);
                 }
             }

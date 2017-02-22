@@ -5,6 +5,8 @@
  */
 package practica1_201503393;
 
+import java.awt.Color;
+
 /**
  *
  * @author Daniel De León
@@ -18,6 +20,7 @@ public class Nodo_Matriz {
     public Nodo_Matriz abajo;
     public Nodo_Matriz izquierda;
     public Nodo_Matriz derecha;
+    public Color bcolor;
     
     //public int dimension = MenuPrincipal.dimension;
     
@@ -61,6 +64,14 @@ public class Nodo_Matriz {
     
     public int getPunteo(){
         return this.punteo;
+    }
+    
+    public void setColor(Color bcolor){
+        this.bcolor = bcolor;
+    }
+    
+    public Color getColor(){
+        return this.bcolor;
     }
     
     public String Mostrar() {        

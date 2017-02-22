@@ -5,6 +5,8 @@
  */
 package practica1_201503393;
 
+import java.util.Random;
+
 /**
  *
  * @author Daniel De León
@@ -13,12 +15,14 @@ public class Jugadores extends javax.swing.JFrame {
     
     public Lista_Juga lj = new Lista_Juga();
     public int conteo = 1;
+    public Cola_Fichas cola = new Cola_Fichas();
 
     /**
      * Creates new form Jugadores
      */
     public Jugadores() {
         initComponents();
+        fichas();
     }
 
     /**
@@ -109,8 +113,11 @@ public class Jugadores extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         Lista_fj fj = new Lista_fj();
+        for(int i=0;i<7;i++){
+            fj.push(cola.pop());
+        }
         lj.insertar(txtjugador.getText(), fj);
-        System.out.println(txtjugador.getText());
+        lj.mostrar();
         txtjugador.setText("");
         conteo++;
         lbljugador.setText("Jugador " + conteo + ":" );
@@ -118,11 +125,29 @@ public class Jugadores extends javax.swing.JFrame {
 
     private void btncontinuarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btncontinuarActionPerformed
         //lj.mostrar();
+        //fichas();
         Tablero tb = new Tablero();
         tb.show();
         this.dispose();
     }//GEN-LAST:event_btncontinuarActionPerformed
 
+    public void fichas(){
+        Random r = new Random();
+
+        String alphabet = "aaaaaaaaaaaaeeeeeeeeeeeeoooooooooiiiiiissssssnnnnnllllrrrrruuuuutttt"+
+                "dddddggccccbbmmpphhfvyqjñxz";
+        while(alphabet.length() != 1){
+            int a = r.nextInt(alphabet.length());
+            System.out.println(a);
+            if(a > 0){
+                char fuera=alphabet.charAt(a);
+                alphabet=alphabet.replaceFirst(Character.toString(fuera), "");
+                System.out.println("se fue el char: "+fuera+" y queda: "+alphabet+" con long: "+alphabet.length());
+                cola.push(fuera);
+           }
+        }
+        cola.push('a');
+    }
     /**
      * @param args the command line arguments
      */

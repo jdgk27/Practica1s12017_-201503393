@@ -330,9 +330,7 @@ public class Tablero extends javax.swing.JFrame {
                 Border bd= lblturno.getBorder();
                 cuadro.setBorder(bd);
                 cuadro.setText("0");
-                /*ImageIcon icono = new ImageIcon(getClass().getResource(tablero.imagen()));
-                Icon cuadrito = new ImageIcon(icono.getImage().getScaledInstance(dimensions, dimensions, Image.SCALE_DEFAULT));
-                cuadro.setIcon(cuadrito);*/
+                //cuadro.setBackground(MenuPrincipal.asd.);
                 panel.add(cuadro);
                 cuadro.setBounds(i * dimensions, j * dimensions, dimensions, dimensions);
                 cuadro.setVisible(true);

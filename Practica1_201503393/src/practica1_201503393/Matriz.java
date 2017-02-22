@@ -5,6 +5,8 @@
  */
 package practica1_201503393;
 
+import java.awt.Color;
+
 /**
  *
  * @author Daniel De León
@@ -111,75 +113,17 @@ public class Matriz {
         aux.setPunteo(punteo);
     }
     
-    /*public String color() {//este metodo esta en la clase de mi matriz
-        String im = actual.getImagen();//nodo actual (seteado inicialmente como el primero)
-        if (actual.getSiguiete() != null) {
-            actual = actual.getSiguiete();
-        } else if (primerfila.getDown() != null) {
-            primerfila = primerfila.getDown();//nodo que indica el primer nodo de la fila actual
-            actually = primerfila;
+    public void setColor(int x, int y, Color color) {
+        Nodo_Matriz aux = new Nodo_Matriz();
+        aux = cabeza;
+        for(int i=0;i<x;i++){
+            aux=aux.derecha;
         }
-        return im;
-    }*/
-    
-    /*public void insertar_col(int valor){
-        Nodo_Matriz nuevo = new Nodo_Matriz(valor);
-        boolean valido = false;
-        if (cabeza.derecha == null){
-            cabeza.derecha.insertar_col(nuevo);
-            cabeza.derecha.izquierda = cabeza;
+        for(int i=0;i<y;i++){
+            aux=aux.abajo;
         }
-        else{
-            Nodo_Matriz aux = cabeza.derecha;
-            while(valido == false){
-                if(aux.derecha == null){
-                    aux.derecha=nuevo;
-                    aux.derecha.izquierda=aux;
-                    valido = true;
-                }
-                else{
-                    aux = aux.derecha;
-                }
-            }          
-        }     
+        aux.setColor(color);
     }
     
-    public void insertar_fila(int valor){
-        Nodo_Matriz nuevo = new Nodo_Matriz(valor);
-        boolean valido = false;
-        if (cabeza.abajo == null){
-            cabeza.abajo.insertar_col(nuevo);
-            cabeza.abajo.arriba = cabeza;
-        }
-        else{
-            Nodo_Matriz aux = cabeza.abajo;
-            while(valido == false){
-                if(aux.abajo == null){
-                    aux.abajo=nuevo;
-                    aux.abajo.arriba=aux;
-                    valido = true;
-                }
-                else{
-                    aux = aux.abajo;
-                }
-            }          
-        }     
-    }
     
-    public void push(int punteo, int valorx,int valory){
-        Nodo_Matriz nuevo = new Nodo_Matriz(-1);
-        
-    }
-
-    public String Mostrar() throws NullPointerException {
-        if (this.cabeza != null) {
-            return this.cabeza.Mostrar();
-        } else {
-            return "La categoría está vacia";
-        }
-    }
-    
-    public void Letra(Nodo_Matriz nodo, String letra){
-        
-    }*/
 }
