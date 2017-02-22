@@ -44,7 +44,7 @@ public class Graficar {
             File miDir = new File(".");
             String directo = miDir.getCanonicalPath();
 
-            String dotPath = directo + "\\Graphviz 2.28\\bin\\dot.exe";
+            String dotPath = directo + "\\Graphviz 2.28\\release\\bin\\dot.exe";
 
             String fileInputPath = directo + "\\Reportes\\" + name + ".txt";
             String fileOutputPath = directo + "\\Reportes\\" + name + ".jpg";

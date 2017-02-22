@@ -6,9 +6,13 @@
 package practica1_201503393;
 
 import java.awt.Image;
+import java.awt.event.KeyEvent;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
+import javax.swing.JComponent;
 import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JTabbedPane;
 import javax.swing.border.Border;
 
 /**
@@ -39,6 +43,22 @@ public class Tablero extends javax.swing.JFrame {
         rd5.setText(Jugadores.lj.nc.ls.cada(4));
         rd6.setText(Jugadores.lj.nc.ls.cada(5));
         rd7.setText(Jugadores.lj.nc.ls.cada(6));
+        
+        JComponent fichas = new JPanel();
+        jtp.addTab("Cola de Fichas", fichas);
+
+        JComponent usuarios = new JPanel();
+        jtp.addTab("Usuarios", usuarios);       
+        
+        JComponent fichasa = new JPanel();
+        jtp.addTab("Fichas activas", fichasa);        
+        
+        JComponent diccio = new JPanel();
+        jtp.addTab("Diccionario", diccio);       
+        
+        JComponent matriz = new JPanel();
+        jtp.addTab("Matriz", matriz);
+        
     }
 
     /**
@@ -96,6 +116,8 @@ public class Tablero extends javax.swing.JFrame {
         jLabel2.setText("Puntuación:");
         jLabel2.setToolTipText("");
 
+        txtpuntuacion.setEnabled(false);
+
         jLabel3.setText("Nueva Palabra:");
 
         btnagregar.setText("Agregar");
@@ -124,24 +146,31 @@ public class Tablero extends javax.swing.JFrame {
         btncambiar.setText("Cambiar");
 
         tp1.setEditable(false);
+        tp1.setDragEnabled(true);
         jScrollPane1.setViewportView(tp1);
 
         tp2.setEditable(false);
+        tp2.setDragEnabled(true);
         jScrollPane2.setViewportView(tp2);
 
         tp3.setEditable(false);
+        tp3.setDragEnabled(true);
         jScrollPane3.setViewportView(tp3);
 
         tp4.setEditable(false);
+        tp4.setDragEnabled(true);
         jScrollPane4.setViewportView(tp4);
 
         tp5.setEditable(false);
+        tp5.setDragEnabled(true);
         jScrollPane5.setViewportView(tp5);
 
         tp6.setEditable(false);
+        tp6.setDragEnabled(true);
         jScrollPane6.setViewportView(tp6);
 
         tp7.setEditable(false);
+        tp7.setDragEnabled(true);
         jScrollPane7.setViewportView(tp7);
 
         btnvalidad.setText("Validad Tipo");
@@ -154,6 +183,9 @@ public class Tablero extends javax.swing.JFrame {
         btncancelar.setText("Cancelar Tipo");
 
         jLabel5.setText("Area de Reportes:");
+
+        jtp.setAutoscrolls(true);
+        jtp.setName(""); // NOI18N
 
         panel.setBackground(new java.awt.Color(255, 255, 255));
         panel.setPreferredSize(new java.awt.Dimension(450, 450));
@@ -315,20 +347,21 @@ public class Tablero extends javax.swing.JFrame {
             jugador =0;
         }
         lblturno.setText(Jugadores.lj.getNombre(jugador));
-        tp1.setText(Jugadores.lj.nc.ls.cada(0));
-        tp2.setText(Jugadores.lj.nc.ls.cada(1));
-        tp3.setText(Jugadores.lj.nc.ls.cada(2));
-        tp4.setText(Jugadores.lj.nc.ls.cada(3));
-        tp5.setText(Jugadores.lj.nc.ls.cada(4));
-        tp6.setText(Jugadores.lj.nc.ls.cada(5));
-        tp7.setText(Jugadores.lj.nc.ls.cada(6));
-        rd1.setText(Jugadores.lj.nc.ls.cada(0));
-        rd2.setText(Jugadores.lj.nc.ls.cada(1));
-        rd3.setText(Jugadores.lj.nc.ls.cada(2));
-        rd4.setText(Jugadores.lj.nc.ls.cada(3));
-        rd5.setText(Jugadores.lj.nc.ls.cada(4));
-        rd6.setText(Jugadores.lj.nc.ls.cada(5));
-        rd7.setText(Jugadores.lj.nc.ls.cada(6));
+        String[] mat = Jugadores.lj.getFichas(jugador);
+        tp1.setText(mat[0]);
+        tp2.setText(mat[1]);
+        tp3.setText(mat[2]);
+        tp4.setText(mat[3]);
+        tp5.setText(mat[4]);
+        tp6.setText(mat[5]);
+        tp7.setText(mat[6]);
+        rd1.setText(mat[0]);
+        rd2.setText(mat[1]);
+        rd3.setText(mat[2]);
+        rd4.setText(mat[3]);
+        rd5.setText(mat[4]);
+        rd6.setText(mat[5]);
+        rd7.setText(mat[6]);
         jugador++;
     }//GEN-LAST:event_btnvalidadActionPerformed
 

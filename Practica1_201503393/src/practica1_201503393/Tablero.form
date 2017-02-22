@@ -214,6 +214,9 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="txtpuntuacion">
+      <Properties>
+        <Property name="enabled" type="boolean" value="false"/>
+      </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel3">
       <Properties>
@@ -285,6 +288,7 @@
         <Component class="javax.swing.JTextPane" name="tp1">
           <Properties>
             <Property name="editable" type="boolean" value="false"/>
+            <Property name="dragEnabled" type="boolean" value="true"/>
           </Properties>
         </Component>
       </SubComponents>
@@ -299,6 +303,7 @@
         <Component class="javax.swing.JTextPane" name="tp2">
           <Properties>
             <Property name="editable" type="boolean" value="false"/>
+            <Property name="dragEnabled" type="boolean" value="true"/>
           </Properties>
         </Component>
       </SubComponents>
@@ -313,6 +318,7 @@
         <Component class="javax.swing.JTextPane" name="tp3">
           <Properties>
             <Property name="editable" type="boolean" value="false"/>
+            <Property name="dragEnabled" type="boolean" value="true"/>
           </Properties>
         </Component>
       </SubComponents>
@@ -327,6 +333,7 @@
         <Component class="javax.swing.JTextPane" name="tp4">
           <Properties>
             <Property name="editable" type="boolean" value="false"/>
+            <Property name="dragEnabled" type="boolean" value="true"/>
           </Properties>
         </Component>
       </SubComponents>
@@ -341,6 +348,7 @@
         <Component class="javax.swing.JTextPane" name="tp5">
           <Properties>
             <Property name="editable" type="boolean" value="false"/>
+            <Property name="dragEnabled" type="boolean" value="true"/>
           </Properties>
         </Component>
       </SubComponents>
@@ -355,6 +363,7 @@
         <Component class="javax.swing.JTextPane" name="tp6">
           <Properties>
             <Property name="editable" type="boolean" value="false"/>
+            <Property name="dragEnabled" type="boolean" value="true"/>
           </Properties>
         </Component>
       </SubComponents>
@@ -369,6 +378,7 @@
         <Component class="javax.swing.JTextPane" name="tp7">
           <Properties>
             <Property name="editable" type="boolean" value="false"/>
+            <Property name="dragEnabled" type="boolean" value="true"/>
           </Properties>
         </Component>
       </SubComponents>
@@ -392,6 +402,10 @@
       </Properties>
     </Component>
     <Container class="javax.swing.JTabbedPane" name="jtp">
+      <Properties>
+        <Property name="autoscrolls" type="boolean" value="true"/>
+        <Property name="name" type="java.lang.String" value="" noResource="true"/>
+      </Properties>
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout"/>
     </Container>

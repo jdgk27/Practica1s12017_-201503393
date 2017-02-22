@@ -99,6 +99,20 @@ public class Lista_Juga {
         return asd.getTitulo();
     }
     
+    public String[] getFichas(int num){
+        Nodo_Juga asd = nc;
+        Lista_fj qwe;
+        String[] zxc=new String[7];
+        for(int i=0; i<num;i++){
+            asd=asd.siguiente;
+        }
+        qwe=asd.getAbajo();
+        for(int i=0;i<7;i++){
+            zxc[i]=qwe.cada(i);
+        }
+        return zxc;
+    }
+    
     public String[] enviarT(){
         Nodo_Juga p;
         String[]tit=new String[conteo];
